@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://woxnmr2geh50"]
+[gd_scene load_steps=2 format=3 uid="uid://woxnmr2geh50"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_t7i6j"]
-[ext_resource type="Texture2D" uid="uid://0o7krt54hhxr" path="res://icon.svg" id="2_58av8"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -11,14 +10,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_t7i6j")
-
-[node name="Popup" type="Popup" parent="."]
-size = Vector2i(128, 128)
-visible = true
-
-[node name="TextureRect" type="TextureRect" parent="Popup"]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("2_58av8")
-expand_mode = 1
-stretch_mode = 5

@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxw8uua4l101p"]
+
+[ext_resource type="Script" path="res://Countdown.gd" id="1_gtd1e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8fa24"]
+font_size = 100
+
+[node name="Countdown" type="Window"]
+position = Vector2i(100, 100)
+script = ExtResource("1_gtd1e")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -14.0
+offset_right = 20.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "null"
+label_settings = SubResource("LabelSettings_8fa24")
