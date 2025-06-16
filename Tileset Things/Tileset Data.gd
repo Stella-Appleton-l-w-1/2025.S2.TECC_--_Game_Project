@@ -91,18 +91,29 @@ var intro_jump_tset: Array[Array] = [
 	[1, 1, 1, 0, 0, 0, 1, 1],
 	[1, 1, 1, 3, 3, 1, 1, 1],
 ]
+
+func get_tile_int(tset_int:int, tile_pos:Vector2i) -> int:
+	var tset: Array[Array] = tset_numbers[tset_int]
+	var column: int = tile_pos.x
+	var row: int = tile_pos.y
+	return tset[row][column]
 #endregion Tilesets
 
 #region Map
 ## Uses [member tset_numbers].
 var tset_map: Array[Array] = [
-	[1, 1, 1, 1, 1, 1, 1, 1],
-	[1, 2, 0, 0, 0, 0, 0, 1],
+	[1, 2, 1, 1, 1, 1, 1, 1],
 	[1, 3, 0, 0, 0, 0, 0, 1],
+	[1, 0, 0, 0, 0, 0, 0, 1],
 	[1, 0, 0, 0, 0, 0, 0, 1],
 	[1, 0, 0, 0, 0, 0, 0, 1],
 	[1, 0, 0, 0, 0, 0, 0, 1],
 	[1, 0, 0, 0, 0, 0, 0, 1],
 	[1, 1, 1, 1, 1, 1, 1, 1],
 ]
+
+func get_tset_int(tset_pos:Vector2i) -> int:
+	var column: int = tset_pos.x
+	var row: int = tset_pos.y
+	return tset_map[row][column]
 #endregion Map

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhlrjw65tiqej"]
+
+[ext_resource type="Script" path="res://Tileset Things/Tileset Agent.gd" id="1_k1rr6"]
+
+[node name="Tileset Agent" type="Node"]
+script = ExtResource("1_k1rr6")
