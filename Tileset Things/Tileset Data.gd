@@ -116,4 +116,30 @@ func get_tset_int(tset_pos:Vector2i) -> int:
 	var column: int = tset_pos.x
 	var row: int = tset_pos.y
 	return tset_map[row][column]
+
+
+func get_tset(tset_int:int) -> Array[Array]:
+	return tset_numbers[tset_int]
+
+func get_tset_spawn_pos(tset_int:int) -> Vector2i:
+	var tset := get_tset(tset_int)
+	
+	var row_num: int = 0
+	var tile_num: int = 0
+	for row in tset:
+		var found: bool = false
+		
+		
+		for tile in row:
+			if tile == TILE.CREATE:
+				found = true
+				break
+			tile_num +=1
+		if found: break
+		row_num +=1
+		if row_num > 7:
+			row_num = 1
+			tile_num = 1
+	
+	return Vector2i(tile_num, row_num)
 #endregion Map

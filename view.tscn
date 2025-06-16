@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://bhlxpiqkyxsv5"]
+
+[node name="View" type="Window"]
+title = "break; -- View"
