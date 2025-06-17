@@ -24,11 +24,25 @@ func _input(event):
 					saved_size = base_window.size
 				KEY_S:
 					print(screen_size)
+				KEY_W:
+					add_child(Window.new())
 				_:
 					print(event.as_text_key_label())
-
-
-func _on_button_pressed():
-	base_window.title = $TextEdit.text
-	print(base_window.title)
 #endregion TEST
+
+func _process(_delta):
+	for child in get_children():
+		if child is Window:
+			snap_to_borders(child)
+
+
+const BORDER_SIZE: int = 40
+
+func snap_to_borders(child):
+	for n in range(2):
+		if child.size[n] > base_window.size[n] - 2*BORDER_SIZE:
+			child.size[n] = base_window.size[n] - 2*BORDER_SIZE
+		if child.position[n] < BORDER_SIZE:
+			child.position[n] = BORDER_SIZE
+		if child.position[n] + child.size[n] > base_window.size[n] - BORDER_SIZE:
+			child.position[n] = base_window.size[n] - child.size[n] - BORDER_SIZE
