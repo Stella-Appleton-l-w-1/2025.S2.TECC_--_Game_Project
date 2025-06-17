@@ -20,11 +20,11 @@ run/main_scene="res://Window Experiments #2/main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://TITLE.svg"
 
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=900
+
 [dotnet]
 
 project/assembly_name="break-"
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"

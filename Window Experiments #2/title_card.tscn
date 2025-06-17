@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://gw7yjnue56lp"]
+
+[ext_resource type="Script" path="res://Window Experiments #2/Title Card.gd" id="1_ii1mg"]
+[ext_resource type="Texture2D" uid="uid://6mtb24rkekh7" path="res://TITLE.svg" id="2_ecs7l"]
+
+[node name="Title Card" type="Window"]
+title = "Title Card"
+size = Vector2i(600, 200)
+min_size = Vector2i(600, 200)
+max_size = Vector2i(600, 200)
+script = ExtResource("1_ii1mg")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(600, 200)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -100.0
+offset_right = 300.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ecs7l")
+expand_mode = 1
+stretch_mode = 5
