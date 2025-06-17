@@ -10,10 +10,15 @@ config_version=5
 
 [application]
 
-config/name="break;"
+config/name="[ break ]"
+config/description="A simple game.
+The goal is to crash the game itself!
+No, closing it doesn't count... (But I won't stop you.)
+
+"
 run/main_scene="res://Window Experiments #2/main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://TITLE.svg"
 
 [dotnet]
 

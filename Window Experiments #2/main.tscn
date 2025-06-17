@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ch7aoqka2yhtt"]
+[gd_scene load_steps=3 format=3 uid="uid://ch7aoqka2yhtt"]
 
 [ext_resource type="Script" path="res://Window Experiments #2/main.gd" id="1_0ikh2"]
+[ext_resource type="Texture2D" uid="uid://6mtb24rkekh7" path="res://TITLE.svg" id="2_fe6ra"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -10,3 +11,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0ikh2")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_top = 105.0
+offset_right = 150.0
+offset_bottom = 155.0
+icon = ExtResource("2_fe6ra")
+expand_icon = true
+
+[connection signal="text_set" from="TextEdit" to="." method="_on_text_set"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
