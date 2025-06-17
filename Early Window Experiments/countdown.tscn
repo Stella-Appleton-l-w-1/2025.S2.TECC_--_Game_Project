@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cxw8uua4l101p"]
 
-[ext_resource type="Script" path="res://Countdown.gd" id="1_gtd1e"]
+[ext_resource type="Script" path="res://Early Window Experiments/Countdown.gd" id="1_gtd1e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8fa24"]
 font_size = 100
