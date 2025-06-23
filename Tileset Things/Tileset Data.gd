@@ -14,13 +14,36 @@ enum TILE { ## Determines what the numbers in tilesets mean.
 	TURN1 = 7, ## Acts like EMPTY when TurnerValue is true, and FULL otherwise.
 	TURNER = 8, ## Sets TurnerValue to not(TurnerValue).
 }
+
+func get_color(tile:TILE) -> Color:
+	match tile:
+		TILE.EMPTY:
+			return Color(1,1,1)
+		TILE.FULL:
+			return Color(0.2,0.15,0)
+		TILE.CREATE:
+			return Color(0.7,1,1)
+		TILE.DESTROY:
+			return Color(0.5,0,0)
+		TILE.WALK:
+			return Color(0.9,1,1)
+		TILE.JUMP:
+			return Color(0.9,1,0.9)
+		TILE.TURN0:
+			return Color(1,0.5,0.5)
+		TILE.TURN1:
+			return Color(0.5,0.5,1)
+		TILE.TURNER:
+			return Color(0.5,0,0.5)
+		_:
+			return Color(1,1,1,0)
 #endregion Tiles
 
 #region Tileset Creation
 const ROWS: int = 8
 const COLUMNS: int = 8
 
-func make_tset(tile:int):
+func make_tset(tile:TILE):
 	var new_tset: Array[Array] = []
 	var new_row: Array[int] = []
 	new_row.resize(COLUMNS)
@@ -43,8 +66,39 @@ func print_tset(tset):
 		bra = true if ch == "]" else false
 	print(tx)
 
+
+var current_tset_pos := Vector2i(1,0)
+var moved_this_frame := false
+
 func _ready():
-	print_tset(empty_tset)
+	print("MAP:")
+	print_tset(tset_map)
+	print("@(1,0):")
+	print_tset(get_tset_from_pos(current_tset_pos))
+
+
+func _process(_delta):
+	moved_this_frame = false
+
+
+func _input(event):
+	if moved_this_frame: return
+	var move_dir := Vector2i(0,0)
+	if event is InputEventKey:
+		if event.is_pressed:
+			if event.keycode == KEY_RIGHT:
+				move_dir.x +=1
+			if event.keycode == KEY_LEFT:
+				move_dir.x -=1
+			if event.keycode == KEY_DOWN:
+				move_dir.y +=1
+			if event.keycode == KEY_UP:
+				move_dir.y -=1
+	if move_dir != Vector2i(0,0):
+		current_tset_pos += move_dir
+		print("@", current_tset_pos, ":")
+		print_tset(get_tset_from_pos(current_tset_pos))
+		moved_this_frame = true
 #endregion TEST
 
 #region Tilesets
@@ -53,13 +107,13 @@ enum TSET {
 	FULL = 1,
 	INTRO_WALK = 2,
 	INTRO_JUMP = 3,
-	
 }
 
 var tset_numbers: Dictionary = {
-	TSET.EMPTY: empty_tset,
-	TSET.FULL: full_tset,
-	TSET.INTRO_WALK: intro_walk_tset,
+	TSET.EMPTY: &"empty_tset",
+	TSET.FULL: &"full_tset",
+	TSET.INTRO_WALK: &"intro_walk_tset",
+	TSET.INTRO_JUMP: &"intro_jump_tset",
 }
 
 var empty_tset: Array[Array]:
@@ -119,7 +173,8 @@ func get_tset_int(tset_pos:Vector2i) -> int:
 
 
 func get_tset(tset_int:int) -> Array[Array]:
-	return tset_numbers[tset_int]
+	return get(tset_numbers[tset_int])
+
 
 func get_tset_spawn_pos(tset_int:int) -> Vector2i:
 	var tset := get_tset(tset_int)
@@ -136,10 +191,15 @@ func get_tset_spawn_pos(tset_int:int) -> Vector2i:
 				break
 			tile_num +=1
 		if found: break
+		tile_num = 0
 		row_num +=1
 		if row_num > 7:
 			row_num = 1
 			tile_num = 1
 	
 	return Vector2i(tile_num, row_num)
+
+
+func get_tset_from_pos(pos:Vector2i) -> Array[Array]:
+	return get_tset(get_tset_int(pos))
 #endregion Map
