@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://4cf5g068ivhs"]
+
+[ext_resource type="Script" path="res://Window Experiments #3/Container.gd" id="1_tci07"]
+
+[node name="View Window" type="Window"]
+
+[node name="PixelGrid" type="Container" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_tci07")
